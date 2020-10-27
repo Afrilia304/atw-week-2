@@ -29,6 +29,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('template', function () {
+    return view('template.base');
+});
 
 
 
@@ -38,7 +41,7 @@ Route::get('/about', function () {
 
 //Route::get('/about', function () {
   //  return view('about');
-//});
+//}); 
 
 //Route::get('/profil', function () {
    // return view('profil');

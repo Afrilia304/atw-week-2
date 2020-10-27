@@ -52,7 +52,7 @@ $app->bind('path.public', function(){
 	return __DIR__."/public";
 })
 
-$kernel = $app->make(Kernel::class);
+
 
 $response = tap($kernel->handle(
     $request = Request::capture()
