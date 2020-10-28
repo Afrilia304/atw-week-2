@@ -1,11 +1,5 @@
 <?php
 /**
- * The main template file
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package ThemeHunk
@@ -14,14 +8,17 @@
  */
 get_header();
 $top_store_pages_sidebar = top_store_pages_sidebar(); ?>
-<div id="content" class="page-content blog">
+<div id="content" class="page-content archive">
             <div class="content-wrap" >
                 <div class="container">
                     <div class="main-area <?php echo esc_attr($top_store_pages_sidebar);?>">
-                         <?php if($top_store_pages_sidebar !=='no-sidebar' && $top_store_pages_sidebar !=='disable-left-sidebar'){get_sidebar('primary');}?>
+                        <?php if($top_store_pages_sidebar !=='no-sidebar' && $top_store_pages_sidebar !=='disable-left-sidebar'){get_sidebar('primary');}?>
                         <div id="primary" class="primary-content-area">
+                            <div class="page-head">
+                   <?php top_store_get_page_title();?>
+                   <?php top_store_breadcrumb_trail();?>
+                    </div>
                             <div class="primary-content-wrap">
-                                <main id="main" class="site-main" role="main">
                                  <?php
             if( have_posts()):
                 /* Start the Loop */
@@ -38,13 +35,11 @@ $top_store_pages_sidebar = top_store_pages_sidebar(); ?>
                 get_template_part( 'template-parts/content', 'none' );
             endif;
 
-           
+           top_store_post_loader();
             ?>
-        </main>
-        <?php top_store_post_loader(); ?>
                            </div> <!-- end primary-content-wrap-->
-                        </div>
-                        <?php if($top_store_pages_sidebar !=='no-sidebar' && $top_store_pages_sidebar !=='disable-right-sidebar'){ get_sidebar('secondary');}?>
+                        </div> <!-- end primary primary-content-area-->
+                       <?php if($top_store_pages_sidebar !=='no-sidebar' && $top_store_pages_sidebar !=='disable-right-sidebar'){ get_sidebar('secondary');}?>
                     </div> <!-- end main-area -->
                 </div>
             </div> <!-- end content-wrap -->
